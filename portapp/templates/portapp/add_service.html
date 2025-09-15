@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+        }
+        .form-input {
+            @apply w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-teal-400 transition-colors duration-300;
+        }
+        .form-label {
+            @apply block text-gray-300 font-semibold mb-2;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen text-gray-100">
+    <!-- Header -->
+    <header class="w-full bg-gray-900 py-4 px-8 flex justify-between items-center shadow-lg">
+        <div class="text-teal-400 font-bold text-xl">My Portfolio</div>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="/" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">About Me</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Certifications</a></li>
+                <li><a href="/services/" class="text-teal-400 font-semibold">Services</a></li>
+                <li><a href="/contact/" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-8">
+        <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold text-center text-gray-100">Add New Service</h1>
+            <div class="w-24 h-1 mx-auto mt-2 rounded-full" style="background-color: #00CED1;"></div>
+
+                <form method="post" enctype="multipart/form-data" class="mt-8 space-y-6">
+                    {% csrf_token %}
+                    <div>
+                        <label for="{{ form.title.id_for_label }}" class="form-label">Service Title</label>
+                        {{ form.title }}
+                    </div>
+                    <div>
+                        <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                        {{ form.description }}
+                    </div>
+                    <div>
+                        <label for="{{ form.image.id_for_label }}" class="form-label">Image</label>
+                        {{ form.image }}
+                    </div>
+                    <button type="submit" class="w-full py-3 px-8 rounded-lg text-white font-semibold shadow-lg transition-transform duration-300 ease-in-out" style="background-color: #00CED1; transform: translateY(0);">
+                        Save Service
+                    </button>
+                </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-gray-900 py-4 px-8 text-center text-gray-500 text-sm">
+        © 2023 My Professional Portfolio. All rights reserved.
+    </footer>
+</body>
+</html>
